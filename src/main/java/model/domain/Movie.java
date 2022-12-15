@@ -3,6 +3,7 @@ package model.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.constants.ErrorMessage;
 
 public class Movie {
     private static final char NEW_LINE = '\n';
@@ -37,6 +38,21 @@ public class Movie {
 
     public List<PlaySchedule> getPlaySchedules() {
         return Collections.unmodifiableList(playSchedules);
+    }
+
+    public void occupySeats(int scheduleIndex, int bookingQuantity) {
+        findPlaySchedule(scheduleIndex).occupySeats(bookingQuantity);
+    }
+
+    private PlaySchedule findPlaySchedule(int scheduleIndex) {
+        validateScheduleIndex(playSchedules.size(), scheduleIndex);
+        return playSchedules.get(scheduleIndex);
+    }
+
+    private void validateScheduleIndex(int schedulesSize, int scheduleIndex) {
+        if (schedulesSize - 1 < scheduleIndex) {
+            throw new IllegalArgumentException(ErrorMessage.SCHEDULE_INDEX_INVALID);
+        }
     }
 
     @Override

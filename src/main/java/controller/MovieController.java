@@ -17,13 +17,13 @@ public class MovieController {
 
     public void run() {
         BookingSelection bookingSelection = selectMovie();
-        bookMovie(bookingSelection);
+        addBooking(bookingSelection);
         boolean toGoPay = InputView.inputActionCommand();
         if (!toGoPay) {
             run();
             return;
         }
-        payBooking();
+        completeBooking();
     }
 
     private BookingSelection selectMovie() {
@@ -33,15 +33,16 @@ public class MovieController {
         return new BookingSelection(movieId, movieService.findAllSchedulesByMovie(movieId));
     }
 
-    private void bookMovie(BookingSelection bookingSelection) {
+    private void addBooking(BookingSelection bookingSelection) {
         int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelection.getPlayScheduleDTO());
         int bookingQuantity = InputView.inputBookingQuantity();
+        // TODO 좌석 수 반영
         BookingInfo bookingInfo = movieService.makeBookingInfo(bookingSelection.getMovieId(), scheduleIndex,
                 bookingQuantity);
-        bookingService.bookSchedule(bookingInfo);
+        bookingService.addBooking(bookingInfo);
     }
 
-    private void payBooking() {
+    private void completeBooking() {
         int pointAmount = InputView.inputPointAmount();
         PayTypeCommand payTypeCommand = InputView.inputPayTypeCommand();
         int totalPayment = bookingService.payBooking(pointAmount, convert(payTypeCommand));

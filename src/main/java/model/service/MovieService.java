@@ -58,19 +58,7 @@ public class MovieService {
     // TODO 테스트 코드 작성
     public BookingInfo makeBookingInfo(int movieId, int scheduleIndex, int bookingQuantity) {
         Movie selectedMovie = findMovie(movieId);
-        PlaySchedule selectedSchedule = findPlaySchedule(selectedMovie, scheduleIndex);
-        return new BookingInfo(selectedMovie.getPrice(), bookingQuantity, selectedSchedule);
-    }
-
-    private PlaySchedule findPlaySchedule(Movie movie, int scheduleIndex) {
-        List<PlaySchedule> playSchedules = movie.getPlaySchedules();
-        validateScheduleIndex(playSchedules.size(), scheduleIndex);
-        return playSchedules.get(scheduleIndex);
-    }
-
-    private void validateScheduleIndex(int schedulesSize, int scheduleIndex) {
-        if (schedulesSize - 1 < scheduleIndex) {
-            throw new IllegalArgumentException(ErrorMessage.SCHEDULE_INDEX_INVALID);
-        }
+        selectedMovie.occupySeats(scheduleIndex, bookingQuantity);
+        return new BookingInfo(selectedMovie.getPrice(), scheduleIndex, bookingQuantity);
     }
 }

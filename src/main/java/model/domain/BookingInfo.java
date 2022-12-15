@@ -2,24 +2,20 @@ package model.domain;
 
 public class BookingInfo {
     private final int price;
+    private final int scheduleIndex;
     private final int quantity;
-    private final PlaySchedule selectedSchedule;
 
-    public BookingInfo(int price, int quantity, PlaySchedule selectedSchedule) {
+    public BookingInfo(int price, int scheduleIndex, int quantity) {
         this.price = price;
+        this.scheduleIndex = scheduleIndex;
         this.quantity = quantity;
-        this.selectedSchedule = selectedSchedule;
     }
 
     public int computeTotalPrice() {
         return price * quantity;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public PlaySchedule getSelectedSchedule() {
-        return selectedSchedule;
+    public int getScheduleIndex() {
+        return scheduleIndex;
     }
 }
