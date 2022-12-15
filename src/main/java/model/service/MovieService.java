@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import model.constants.ErrorMessage;
 import model.domain.Movie;
 import model.domain.MovieRepository;
+import model.domain.PlaySchedule;
 
 public class MovieService {
     public List<MovieDTO> getAllMovies() {
@@ -24,6 +25,25 @@ public class MovieService {
     }
 
     public List<PlayScheduleDTO> findAllSchedulesByMovie(int movieId) {
-        return null;
+        Movie movie = MovieRepository.findMovieById(movieId);
+        validateFoundMovie(movie);
+        List<PlaySchedule> playSchedules = movie.getPlaySchedules();
+        validateFoundSchedules(playSchedules);
+        return movie.getPlaySchedules()
+                .stream()
+                .map(DTOConvertor::from)
+                .collect(Collectors.toList());
+    }
+
+    private void validateFoundMovie(Movie movie) {
+        if (movie == null) {
+            throw new IllegalArgumentException(ErrorMessage.MOVIE_NOT_FOUND);
+        }
+    }
+
+    private void validateFoundSchedules(List<PlaySchedule> playSchedules) {
+        if (playSchedules.isEmpty()) {
+            throw new IllegalStateException(ErrorMessage.MOVIE_SCHEDULES_NOT_FOUND);
+        }
     }
 }

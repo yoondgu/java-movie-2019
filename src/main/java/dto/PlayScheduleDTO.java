@@ -8,4 +8,20 @@ public class PlayScheduleDTO {
         this.startDateTime = startDateTime;
         this.capacity = capacity;
     }
+
+    public String getStartDateTime() {
+        return startDateTime;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayScheduleDTO{" +
+                "startDateTime='" + startDateTime + '\'' +
+                ", capacity=" + capacity +
+                '}';
+    }
 }

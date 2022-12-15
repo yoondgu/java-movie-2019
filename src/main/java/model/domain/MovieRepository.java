@@ -43,4 +43,11 @@ public class MovieRepository {
     public static List<Movie> getMovies() {
         return Collections.unmodifiableList(movies);
     }
+
+    public static Movie findMovieById(int movieId) {
+        return movies.stream()
+                .filter(movie -> movie.getId() == movieId)
+                .findFirst()
+                .orElse(null);
+    }
 }
