@@ -7,6 +7,7 @@ public class Format {
 
     public static final String MOVIE_INFO = "%d - %s, %s" + System.lineSeparator();
     public static final String SCHEDULE_INFO = "시작시간: %s 예약가능인원: %d" + System.lineSeparator();
+    public static final String TOTAL_PAYMENT_INFO = "최종 결제한 금액은 %s원 입니다." + System.lineSeparator();
     public static final String INPUT_MESSAGE_HEADER = "## %s" + System.lineSeparator();
 
     private Format() {

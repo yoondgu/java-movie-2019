@@ -45,8 +45,8 @@ public class MovieController {
         int pointAmount = InputView.inputPointAmount();
         PayTypeCommand payTypeCommand = InputView.inputPayTypeCommand();
         int totalPayment = bookingService.payBooking(pointAmount, convert(payTypeCommand));
-        // TODO 최종 금액 출력
-        System.out.println(totalPayment);
+        OutputView.printTotalPayment(totalPayment);
+        OutputView.printInformBookingCompleted();
     }
 
     private PayType convert(PayTypeCommand command) {
