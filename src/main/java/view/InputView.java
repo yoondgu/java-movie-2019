@@ -24,7 +24,7 @@ public class InputView {
         printInputHeader(InputMessage.SELECT_SCHEDULE_INDEX);
         showPlaySchedules(playSchedules);
         String line = scanner.nextLine();
-        return NumberParser.parseDigit(line);
+        return NumberParser.parseNaturalNumber(line);
     }
 
     private static void showPlaySchedules(List<PlayScheduleDTO> playSchedules) {
@@ -36,7 +36,7 @@ public class InputView {
         System.out.println();
         printInputHeader(InputMessage.INPUT_BOOKING_QUANTITY);
         String line = scanner.nextLine();
-        return NumberParser.parseDigit(line);
+        return NumberParser.parseNaturalNumber(line);
     }
 
     // TODO Command 인터페이스 검토
@@ -53,6 +53,13 @@ public class InputView {
         printInputHeader(InputMessage.SELECT_TO_GO_PAY_OR_NOT);
         String line = scanner.nextLine();
         return PayTypeCommand.find(line);
+    }
+
+    public static int inputPointAmount() {
+        System.out.println();
+        printInputHeader(InputMessage.INPUT_POINT_AMOUNT);
+        String line = scanner.nextLine();
+        return NumberParser.parseDigit(line);
     }
 
     private static void printInputHeader(String message) {

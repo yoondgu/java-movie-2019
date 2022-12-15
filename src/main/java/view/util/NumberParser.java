@@ -8,8 +8,16 @@ public class NumberParser {
 
     public static int parseDigit(String value) {
         int number = parseInteger(value);
-        if (number <= 0) {
+        if (number < 0) {
             throw new IllegalArgumentException(ErrorMessage.NOT_A_DIGIT);
+        }
+        return number;
+    }
+
+    public static int parseNaturalNumber(String value) {
+        int number = parseInteger(value);
+        if (number <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_A_NATURAL_NUMBER);
         }
         return number;
     }

@@ -39,8 +39,11 @@ public class MovieController {
         bookingService.bookSchedule(bookingInfo);
     }
 
-    // TODO 결제
     private void payBooking() {
-
+        int pointAmount = InputView.inputPointAmount();
+        System.out.println(pointAmount);
+        // TODO 결제 유형 입력
+        // TODO 결제 진행
+        // TODO 최종 금액 출력
     }
 }
