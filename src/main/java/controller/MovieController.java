@@ -1,7 +1,7 @@
 package controller;
 
+import dto.BookingSelection;
 import dto.MovieDTO;
-import dto.PlayScheduleDTO;
 import java.util.List;
 import model.service.MovieService;
 import view.InputView;
@@ -11,18 +11,24 @@ public class MovieController {
     private final MovieService movieService = new MovieService();
 
     public void run() {
-        List<PlayScheduleDTO> playSchedulesByMovie = selectMovie();
-        int scheduleIndex = selectPlaySchedule(playSchedulesByMovie);
+        BookingSelection bookingSelection = selectMovie();
+        bookMovie(bookingSelection);
     }
 
-    private List<PlayScheduleDTO> selectMovie() {
+    private BookingSelection selectMovie() {
         List<MovieDTO> allMovies = movieService.getAllMovies();
         OutputView.printMovies(allMovies);
         int movieId = InputView.inputMovieId();
-        return movieService.findAllSchedulesByMovie(movieId);
+        return new BookingSelection(movieId, movieService.findAllSchedulesByMovie(movieId));
     }
 
-    private int selectPlaySchedule(List<PlayScheduleDTO> playSchedules) {
-        return InputView.inputPlayScheduleIndex(playSchedules);
+    private void bookMovie(BookingSelection bookingSelection) {
+        int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelection.getPlayScheduleDTO());
+        int bookingQuantity = InputView.inputBookingQuantity();
+        // TODO 입력받은 인원, 시간표로 예매 진행
+//        movieService.book(bookingSelection.getMovieId(), scheduleIndex, bookingQuantity);
     }
+
+    // TOOD 결제 / 추가 예매 여부 확인
+    // TODO 결제
 }
