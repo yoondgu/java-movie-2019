@@ -3,6 +3,8 @@ package controller;
 import dto.MovieDTO;
 import java.util.List;
 import service.MovieService;
+import view.InputView;
+import view.OutputView;
 
 public class MovieController {
     private final MovieService movieService = new MovieService();
@@ -13,8 +15,10 @@ public class MovieController {
 
     private int selectMovie() {
         List<MovieDTO> allMovies = movieService.getAllMovies();
-        // TODO 영화 목록 출력
-        // TODO 영화 번호 입력받기
-        return 0;
+        OutputView.printMovies(allMovies);
+        if (allMovies.isEmpty()) {
+            return Integer.MAX_VALUE;
+        }
+        return InputView.inputMovieId();
     }
 }

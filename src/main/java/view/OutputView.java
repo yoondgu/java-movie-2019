@@ -1,12 +1,21 @@
 package view;
 
-import domain.Movie;
+import dto.MovieDTO;
 import java.util.List;
+import view.constants.OutputFormat;
+import view.constants.OutputMessage;
 
 public class OutputView {
-    public static void printMovies(List<Movie> movies) {
-        for (Movie movie : movies) {
-            System.out.println(movie);
+    public static void printMovies(List<MovieDTO> movies) {
+        if (movies.isEmpty()) {
+            System.out.println(OutputMessage.ALL_MOVIES_EMPTY);
+            return;
         }
+        movies.forEach(OutputView::printMovie);
+    }
+
+    private static void printMovie(MovieDTO movie) {
+        String moneyLocaleDisplay = OutputFormat.MONEY_KRW.format(movie.getPrice());
+        System.out.printf(OutputFormat.MOVIE_INFO, movie.getId(), movie.getName(), moneyLocaleDisplay);
     }
 }
