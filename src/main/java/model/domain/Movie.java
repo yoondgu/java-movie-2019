@@ -1,6 +1,7 @@
-package domain;
+package model.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Movie {
@@ -35,7 +36,7 @@ public class Movie {
     }
 
     public List<PlaySchedule> getPlaySchedules() {
-        return playSchedules;
+        return Collections.unmodifiableList(playSchedules);
     }
 
     @Override

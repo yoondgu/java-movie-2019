@@ -3,14 +3,9 @@ package view;
 import dto.MovieDTO;
 import java.util.List;
 import view.constants.OutputFormat;
-import view.constants.OutputMessage;
 
 public class OutputView {
     public static void printMovies(List<MovieDTO> movies) {
-        if (movies.isEmpty()) {
-            System.out.println(OutputMessage.ALL_MOVIES_EMPTY);
-            return;
-        }
         movies.forEach(OutputView::printMovie);
     }
 

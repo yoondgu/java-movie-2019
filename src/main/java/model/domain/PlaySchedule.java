@@ -1,4 +1,4 @@
-package domain;
+package model.domain;
 
 import static utils.DateTimeUtils.format;
 
@@ -11,6 +11,14 @@ public class PlaySchedule {
     public PlaySchedule(LocalDateTime startDateTime, int capacity) {
         this.startDateTime = startDateTime;
         this.capacity = capacity;
+    }
+
+    public String getFormattedStartDateTime() {
+        return format(startDateTime);
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     @Override

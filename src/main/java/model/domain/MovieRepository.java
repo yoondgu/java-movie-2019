@@ -1,4 +1,4 @@
-package domain;
+package model.domain;
 
 import static utils.DateTimeUtils.createDateTime;
 

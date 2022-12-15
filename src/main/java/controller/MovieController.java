@@ -1,8 +1,9 @@
 package controller;
 
 import dto.MovieDTO;
+import dto.PlayScheduleDTO;
 import java.util.List;
-import service.MovieService;
+import model.service.MovieService;
 import view.InputView;
 import view.OutputView;
 
@@ -13,12 +14,16 @@ public class MovieController {
         selectMovie();
     }
 
-    private int selectMovie() {
+    private List<PlayScheduleDTO> selectMovie() {
         List<MovieDTO> allMovies = movieService.getAllMovies();
         OutputView.printMovies(allMovies);
-        if (allMovies.isEmpty()) {
-            return Integer.MAX_VALUE;
-        }
-        return InputView.inputMovieId();
+        int movieId = InputView.inputMovieId();
+        return movieService.findAllSchedulesByMovie(movieId);
+    }
+
+    private int selectPlaySchedule(int movieId) {
+        // TODO 시간표 출력
+        // TODO 시간표 번호 선택
+        return 0;
     }
 }
