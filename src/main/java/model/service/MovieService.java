@@ -11,8 +11,6 @@ import model.domain.MovieRepository;
 import model.domain.PlaySchedule;
 
 public class MovieService {
-    private final int totalBookingAmount = 0;
-
     public List<MovieDTO> getAllMovies() {
         List<Movie> allMovies = MovieRepository.getMovies();
         validateAllMovies(allMovies);
@@ -55,10 +53,9 @@ public class MovieService {
         }
     }
 
-    // TODO 테스트 코드 작성
     public BookingInfo makeBookingInfo(int movieId, int scheduleIndex, int bookingQuantity) {
         Movie selectedMovie = findMovie(movieId);
         selectedMovie.occupySeats(scheduleIndex, bookingQuantity);
-        return new BookingInfo(selectedMovie.getPrice(), scheduleIndex, bookingQuantity);
+        return new BookingInfo(selectedMovie.getPrice(), bookingQuantity);
     }
 }

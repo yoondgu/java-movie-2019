@@ -54,14 +54,4 @@ public class Movie {
             throw new IllegalArgumentException(ErrorMessage.SCHEDULE_INDEX_INVALID);
         }
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (PlaySchedule playSchedule : playSchedules) {
-            sb.append(playSchedule);
-        }
-        return id + " - " + name + ", " + price + "원" + NEW_LINE
-                + sb;
-    }
 }

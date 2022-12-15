@@ -1,13 +1,12 @@
-package model.domain;
+package dto;
 
-import dto.PlayScheduleDTO;
 import java.util.List;
 
-public class BookingSelection {
+public class BookingSelectionDTO {
     private final int movieId;
     private final List<PlayScheduleDTO> playScheduleDTO;
 
-    public BookingSelection(int movieId, List<PlayScheduleDTO> playScheduleDTO) {
+    public BookingSelectionDTO(int movieId, List<PlayScheduleDTO> playScheduleDTO) {
         this.movieId = movieId;
         this.playScheduleDTO = playScheduleDTO;
     }

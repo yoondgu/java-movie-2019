@@ -1,9 +1,9 @@
 package controller;
 
+import dto.BookingSelectionDTO;
 import dto.MovieDTO;
 import java.util.List;
 import model.domain.BookingInfo;
-import model.domain.BookingSelection;
 import model.domain.PayType;
 import model.service.BookingService;
 import model.service.MovieService;
@@ -16,8 +16,8 @@ public class MovieController {
     private final BookingService bookingService = new BookingService();
 
     public void run() {
-        BookingSelection bookingSelection = selectMovie();
-        addBooking(bookingSelection);
+        BookingSelectionDTO bookingSelectionDTO = selectMovie();
+        addBooking(bookingSelectionDTO);
         boolean toGoPay = InputView.inputActionCommand();
         if (!toGoPay) {
             run();
@@ -26,18 +26,17 @@ public class MovieController {
         completeBooking();
     }
 
-    private BookingSelection selectMovie() {
+    private BookingSelectionDTO selectMovie() {
         List<MovieDTO> allMovies = movieService.getAllMovies();
         OutputView.printMovies(allMovies);
         int movieId = InputView.inputMovieId();
-        return new BookingSelection(movieId, movieService.findAllSchedulesByMovie(movieId));
+        return new BookingSelectionDTO(movieId, movieService.findAllSchedulesByMovie(movieId));
     }
 
-    private void addBooking(BookingSelection bookingSelection) {
-        int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelection.getPlayScheduleDTO());
+    private void addBooking(BookingSelectionDTO bookingSelectionDTO) {
+        int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelectionDTO.getPlayScheduleDTO());
         int bookingQuantity = InputView.inputBookingQuantity();
-        // TODO 좌석 수 반영
-        BookingInfo bookingInfo = movieService.makeBookingInfo(bookingSelection.getMovieId(), scheduleIndex,
+        BookingInfo bookingInfo = movieService.makeBookingInfo(bookingSelectionDTO.getMovieId(), scheduleIndex,
                 bookingQuantity);
         bookingService.addBooking(bookingInfo);
     }
