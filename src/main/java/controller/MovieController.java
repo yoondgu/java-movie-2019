@@ -16,6 +16,12 @@ public class MovieController {
     public void run() {
         BookingSelection bookingSelection = selectMovie();
         bookMovie(bookingSelection);
+        boolean toGoPay = InputView.inputActionCommand();
+        if (!toGoPay) {
+            run();
+            return;
+        }
+        payBooking();
     }
 
     private BookingSelection selectMovie() {
@@ -33,6 +39,8 @@ public class MovieController {
         bookingService.bookSchedule(bookingInfo);
     }
 
-    // TOOD 결제 / 추가 예매 여부 확인
     // TODO 결제
+    private void payBooking() {
+
+    }
 }
