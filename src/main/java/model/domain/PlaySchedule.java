@@ -3,10 +3,11 @@ package model.domain;
 import static utils.DateTimeUtils.format;
 
 import java.time.LocalDateTime;
+import model.constants.ErrorMessage;
 
 public class PlaySchedule {
     private final LocalDateTime startDateTime;
-    private final int capacity;
+    private int capacity;
 
     public PlaySchedule(LocalDateTime startDateTime, int capacity) {
         this.startDateTime = startDateTime;
@@ -21,8 +22,14 @@ public class PlaySchedule {
         return capacity;
     }
 
-    @Override
-    public String toString() {
-        return "시작시간: " + format(startDateTime) + " 예약가능인원: " + capacity + "\n";
+    public void occupySeats(int count) {
+        validateOccupyCount(count);
+        capacity -= count;
+    }
+
+    private void validateOccupyCount(int count) {
+        if (count > capacity) {
+            throw new IllegalArgumentException(ErrorMessage.SCHEDULE_CAPACITY_LACK);
+        }
     }
 }

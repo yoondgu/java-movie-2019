@@ -25,8 +25,7 @@ public class MovieController {
     private void bookMovie(BookingSelection bookingSelection) {
         int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelection.getPlayScheduleDTO());
         int bookingQuantity = InputView.inputBookingQuantity();
-        // TODO 입력받은 인원, 시간표로 예매 진행
-//        movieService.book(bookingSelection.getMovieId(), scheduleIndex, bookingQuantity);
+        movieService.book(bookingSelection.getMovieId(), scheduleIndex, bookingQuantity);
     }
 
     // TOOD 결제 / 추가 예매 여부 확인
