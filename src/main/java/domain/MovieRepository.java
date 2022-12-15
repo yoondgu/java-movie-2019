@@ -3,6 +3,7 @@ package domain;
 import static utils.DateTimeUtils.createDateTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MovieRepository {
@@ -40,6 +41,6 @@ public class MovieRepository {
     }
 
     public static List<Movie> getMovies() {
-        return movies;
+        return Collections.unmodifiableList(movies);
     }
 }
