@@ -46,7 +46,7 @@ public class Movie {
 
     private PlaySchedule findPlaySchedule(int scheduleIndex) {
         validateScheduleIndex(playSchedules.size(), scheduleIndex);
-        return playSchedules.get(scheduleIndex);
+        return playSchedules.get(scheduleIndex - 1);
     }
 
     private void validateScheduleIndex(int schedulesSize, int scheduleIndex) {
