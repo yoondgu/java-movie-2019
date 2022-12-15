@@ -10,5 +10,5 @@ repositories {
 
 dependencies {
     testCompile('junit:junit:4.13.2')
-    testCompile('org.assertj:assertj-core:3.11.1')
+    testCompile('org.assertj:assertj-core:3.23.1')
 }
