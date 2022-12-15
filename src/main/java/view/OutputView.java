@@ -2,7 +2,7 @@ package view;
 
 import dto.MovieDTO;
 import java.util.List;
-import view.constants.OutputFormat;
+import view.constants.Format;
 
 public class OutputView {
     public static void printMovies(List<MovieDTO> movies) {
@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     private static void printMovie(MovieDTO movie) {
-        String moneyLocaleDisplay = OutputFormat.MONEY_KRW.format(movie.getPrice());
-        System.out.printf(OutputFormat.MOVIE_INFO, movie.getId(), movie.getName(), moneyLocaleDisplay);
+        String moneyLocaleDisplay = Format.MONEY_KRW.format(movie.getPrice());
+        System.out.printf(Format.MOVIE_INFO, movie.getId(), movie.getName(), moneyLocaleDisplay);
     }
 }

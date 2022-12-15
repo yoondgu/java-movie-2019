@@ -11,7 +11,8 @@ public class MovieController {
     private final MovieService movieService = new MovieService();
 
     public void run() {
-        selectMovie();
+        List<PlayScheduleDTO> playSchedulesByMovie = selectMovie();
+        int scheduleIndex = selectPlaySchedule(playSchedulesByMovie);
     }
 
     private List<PlayScheduleDTO> selectMovie() {
@@ -21,9 +22,7 @@ public class MovieController {
         return movieService.findAllSchedulesByMovie(movieId);
     }
 
-    private int selectPlaySchedule(int movieId) {
-        // TODO 시간표 출력
-        // TODO 시간표 번호 선택
-        return 0;
+    private int selectPlaySchedule(List<PlayScheduleDTO> playSchedules) {
+        return InputView.inputPlayScheduleIndex(playSchedules);
     }
 }
