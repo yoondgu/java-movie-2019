@@ -1,12 +1,12 @@
 package domain;
 
+import static utils.DateTimeUtils.createDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static utils.DateTimeUtils.createDateTime;
-
 public class MovieRepository {
-    private static List<Movie> movies = new ArrayList<>();
+    private static final List<Movie> movies = new ArrayList<>();
 
     static {
         Movie movie1 = new Movie(1, "생일", 8_000);

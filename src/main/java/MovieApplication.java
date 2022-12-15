@@ -1,9 +1,8 @@
 import domain.Movie;
 import domain.MovieRepository;
+import java.util.List;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class MovieApplication {
     public static void main(String[] args) {

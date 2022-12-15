@@ -10,7 +10,7 @@ public class Movie {
     private final String name;
     private final int price;
 
-    private List<PlaySchedule> playSchedules = new ArrayList<>();
+    private final List<PlaySchedule> playSchedules = new ArrayList<>();
 
     public Movie(int id, String name, int price) {
         this.id = id;
@@ -29,6 +29,6 @@ public class Movie {
             sb.append(playSchedule);
         }
         return id + " - " + name + ", " + price + "원" + NEW_LINE
-                + sb.toString();
+                + sb;
     }
 }

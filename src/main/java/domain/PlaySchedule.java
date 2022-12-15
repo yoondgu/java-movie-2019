@@ -1,12 +1,12 @@
 package domain;
 
-import java.time.LocalDateTime;
-
 import static utils.DateTimeUtils.format;
+
+import java.time.LocalDateTime;
 
 public class PlaySchedule {
     private final LocalDateTime startDateTime;
-    private int capacity;
+    private final int capacity;
 
     public PlaySchedule(LocalDateTime startDateTime, int capacity) {
         this.startDateTime = startDateTime;

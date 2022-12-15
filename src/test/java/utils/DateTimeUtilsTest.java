@@ -1,10 +1,9 @@
 package utils;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class DateTimeUtilsTest {
     @Test
