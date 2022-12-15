@@ -50,7 +50,7 @@ public class InputView {
 
     public static PayTypeCommand inputPayTypeCommand() {
         System.out.println();
-        printInputHeader(InputMessage.SELECT_TO_GO_PAY_OR_NOT);
+        printInputHeader(InputMessage.SELECT_PAY_TYPE);
         String line = scanner.nextLine();
         return PayTypeCommand.find(line);
     }

@@ -6,4 +6,5 @@ public class InputMessage {
     public static final String INPUT_BOOKING_QUANTITY = "예약할 인원을 입력하세요.";
     public static final String SELECT_TO_GO_PAY_OR_NOT = "예약을 종료하고 결제를 진행하려면 1번, 추가 예약을 진행하려면 2번";
     public static final String INPUT_POINT_AMOUNT = "포인트 사용 금액을 입력하세요. 포인트가 없으면 0 입력";
+    public static final String SELECT_PAY_TYPE = "신용카드는 1번, 현금은 2번";
 }
