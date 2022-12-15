@@ -1,5 +1,6 @@
-package dto;
+package model.domain;
 
+import dto.PlayScheduleDTO;
 import java.util.List;
 
 public class BookingSelection {

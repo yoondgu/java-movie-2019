@@ -1,14 +1,17 @@
 package controller;
 
-import dto.BookingSelection;
 import dto.MovieDTO;
 import java.util.List;
+import model.domain.BookingInfo;
+import model.domain.BookingSelection;
+import model.service.BookingService;
 import model.service.MovieService;
 import view.InputView;
 import view.OutputView;
 
 public class MovieController {
     private final MovieService movieService = new MovieService();
+    private final BookingService bookingService = new BookingService();
 
     public void run() {
         BookingSelection bookingSelection = selectMovie();
@@ -25,7 +28,9 @@ public class MovieController {
     private void bookMovie(BookingSelection bookingSelection) {
         int scheduleIndex = InputView.inputPlayScheduleIndex(bookingSelection.getPlayScheduleDTO());
         int bookingQuantity = InputView.inputBookingQuantity();
-        movieService.book(bookingSelection.getMovieId(), scheduleIndex, bookingQuantity);
+        BookingInfo bookingInfo = movieService.makeBookingInfo(bookingSelection.getMovieId(), scheduleIndex,
+                bookingQuantity);
+        bookingService.bookSchedule(bookingInfo);
     }
 
     // TOOD 결제 / 추가 예매 여부 확인
